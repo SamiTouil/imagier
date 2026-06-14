@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Mon grand livre</title>
+  <meta name="theme-color" content="#F4E9D8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Mon grand livre">
+  <link rel="icon" href="assets/icon-180.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icon-512.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Accueil -->
+  <main id="home">
+    <header class="home-header">
+      <h1>Mon grand livre</h1>
+      <div class="rainbow-bar" aria-hidden="true"></div>
+    </header>
+
+    <div class="grid-wrap">
+      <section class="home-section">
+        <h2 class="section-label">Les histoires</h2>
+        <div id="story-cards"></div>
+      </section>
+
+      <section class="home-section">
+        <h2 class="section-label">L'imagier</h2>
+        <button id="surprise-card" type="button">
+          <span class="sparkle" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2l2.2 6.3L21 10l-6.8 1.7L12 18l-2.2-6.3L3 10l6.8-1.7L12 2z" fill="currentColor"/>
+              <circle cx="19" cy="4.5" r="1.6" fill="currentColor"/>
+              <circle cx="5" cy="18.5" r="1.4" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="s-title">Surprise&nbsp;!</span>
+          <span class="s-sub">Tout mélangé</span>
+        </button>
+
+        <div id="theme-grid"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Histoire -->
+  <main id="story" class="hidden">
+    <div class="topbar">
+      <button id="story-home" class="round-btn" type="button" aria-label="Retour à l'accueil">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 11l9-8 9 8"/>
+          <path d="M5 9.5V21h5v-6h4v6h5V9.5"/>
+        </svg>
+      </button>
+      <div id="story-title"></div>
+      <div class="topbar-spacer" aria-hidden="true"></div>
+    </div>
+
+    <div id="story-area">
+      <button id="story-prev" class="nav-btn" type="button" aria-label="Page précédente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 5l-7 7 7 7"/>
+        </svg>
+      </button>
+
+      <div id="story-page">
+        <div class="story-illu-wrap">
+          <img id="story-img" alt="" draggable="false">
+          <video id="story-video" playsinline webkit-playsinline preload="auto"></video>
+        </div>
+        <div id="story-text"></div>
+        <div id="story-hint" class="hidden"></div>
+      </div>
+
+      <button id="story-next" class="nav-btn" type="button" aria-label="Page suivante">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="story-counter" aria-hidden="true"></div>
+  </main>
+
+  <!-- Visionneuse -->
+  <main id="viewer" class="hidden">
+    <div class="topbar">
+      <button id="btn-home" class="round-btn" type="button" aria-label="Retour à l'accueil">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 11l9-8 9 8"/>
+          <path d="M5 9.5V21h5v-6h4v6h5V9.5"/>
+        </svg>
+      </button>
+      <div id="theme-chip"></div>
+      <button id="btn-sound" class="round-btn" type="button" aria-label="Activer ou couper le son">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor" stroke="none"/>
+          <g class="sound-waves">
+            <path d="M15.5 8.5a5 5 0 010 7"/>
+            <path d="M18.5 6a9 9 0 010 12"/>
+          </g>
+          <g class="sound-off">
+            <path d="M16 9.5l5 5M21 9.5l-5 5"/>
+          </g>
+        </svg>
+      </button>
+    </div>
+
+    <div id="card-area">
+      <button id="btn-prev" class="nav-btn" type="button" aria-label="Image précédente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 5l-7 7 7 7"/>
+        </svg>
+      </button>
+
+      <div id="flashcard">
+        <div class="illu-wrap">
+          <img id="illu" alt="" draggable="false">
+          <video id="illu-video" playsinline webkit-playsinline preload="auto"></video>
+        </div>
+        <div class="word" id="word">
+          <span id="article"></span><span id="noun"></span>
+        </div>
+      </div>
+
+      <button id="btn-next" class="nav-btn" type="button" aria-label="Image suivante">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="counter" aria-hidden="true"></div>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="stories.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').catch(function () { /* tant pis */ });
+      });
+    }
+  </script>
+</body>
+</html>
